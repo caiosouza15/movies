@@ -5,15 +5,20 @@ function app(){
 
   const [movies, setMovies] = useState<Movie[]>([]);  
 
-  const loadMovies = () => {   
+  /*const loadMovies = () => {   
       fetch('https://api.b7web.com.br/cinema/').then((res) =>{
         return res.json();
     })
     .then((json)=>{
       setMovies(json);
-    })
-  
-} 
+    })  
+}*/ 
+const loadMovies = async () => {   
+  let respose = await  fetch('https://api.b7web.com.br/cinema/'); //Armazenando o retorno da req no let
+  let json = await respose.json(); //Armazenando a resposta em json  e transforma e json
+  setMovies(json);  
+}
+
   return (    
    <div>  
      <div className="h-24 flex flex-col items-center justify-center">  
